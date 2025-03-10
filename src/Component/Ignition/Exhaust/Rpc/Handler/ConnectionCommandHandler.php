@@ -1,0 +1,43 @@
+<?php
+
+/*
+ * Nytris Turbo - Turbocharged HTTP/FastCGI for PHP.
+ * Copyright (c) Dan Phillimore (asmblah)
+ * https://github.com/nytris/turbo/
+ *
+ * Released under the MIT license.
+ * https://github.com/nytris/turbo/raw/main/MIT-LICENSE.txt
+ */
+
+declare(strict_types=1);
+
+namespace Nytris\Turbo\Component\Ignition\Exhaust\Rpc\Handler;
+
+use Nytris\Turbo\Component\Ignition\Connection\ConnectionTableInterface;
+use Nytris\Turbo\Component\Rpc\Handler\HandlerInterface;
+use Nytris\Turbo\Component\Rpc\Handler\HandlerTrait;
+
+/**
+ * Class ConnectionCommandHandler.
+ *
+ * @author Dan Phillimore <dan@ovms.co>
+ */
+class ConnectionCommandHandler implements HandlerInterface
+{
+    use HandlerTrait;
+
+    public function __construct(
+        private readonly ConnectionTableInterface $connectionTable
+    ) {
+    }
+
+    /**
+     * Handles the sending of a chunk of response data to the client.
+     */
+    public function reply(int $connectionId, string $chunk): void
+    {
+        $connection = $this->connectionTable->getConnection($connectionId);
+
+        $connection->write($chunk);
+    }
+}

@@ -1,0 +1,29 @@
+#!/usr/bin/env php
+<?php
+
+/*
+ * Nytris Turbo - Turbocharged HTTP/FastCGI for PHP.
+ * Copyright (c) Dan Phillimore (asmblah)
+ * https://github.com/nytris/turbo/
+ *
+ * Released under the MIT license.
+ * https://github.com/nytris/turbo/raw/main/MIT-LICENSE.txt
+ */
+
+declare(strict_types=1);
+
+use Nytris\Core\Includer\Includer;
+use Nytris\Turbo\Binary\Turbo\TurboBinary;
+use Nytris\Turbo\Component\Ignition\IgnitionProvider;
+use Nytris\Turbo\Nytris\Booter;
+use Symfony\Component\Console\Application;
+
+require_once $_composer_autoload_path ?? __DIR__ . '/../vendor/autoload.php';
+
+(
+    new TurboBinary(
+        new Application(name: 'Nytris Turbo'),
+        new Booter(new Includer()),
+        new IgnitionProvider()
+    )
+)->run();

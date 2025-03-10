@@ -1,0 +1,48 @@
+{
+    "name": "nytris/turbo",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Nytris\\Turbo\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Nytris\\Turbo\\Tests\\": "tests/"
+        }
+    },
+    "bin": [
+        "bin/turbo"
+    ],
+    "require": {
+        "php": ">=8.1",
+        "composer-runtime-api": "^2.2",
+        "asmblah/php-code-shift": "^0.1",
+        "lisachenko/protocol-fcgi": "^3.0.0",
+        "nytris/nytris": "^0.1",
+        "react/child-process": "^0.6.6",
+        "react/http": "^1.11",
+        "react/socket": "^1.16",
+        "react/stream": "^1.4",
+        "symfony/console": "^5.4",
+        "tasque/event-loop": "^0.1",
+        "tasque/tasque": "^0.1"
+    },
+    "require-dev": {
+        "asmblah/fast-cgi": "^0.1",
+        "mockery/mockery": "1.6.11",
+        "phpstan/phpstan": "^1.10",
+        "phpstan/phpstan-mockery": "^1.1",
+        "phpunit/phpunit": "^10.2",
+        "symfony/filesystem": "^5.4",
+        "symfony/http-foundation": "^5.4",
+        "symfony/http-kernel": "^5.4"
+    },
+    "config": {
+        "platform": {
+            "php": "8.1"
+        },
+        "sort-packages": true
+    }
+}
